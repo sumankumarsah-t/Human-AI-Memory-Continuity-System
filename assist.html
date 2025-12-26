@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Context-Aware Assist</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h2>Context-Aware Assist</h2>
+
+    <p>
+        Describe your current situation. The system will recall a relevant
+        past decision based on extracted decision signals and explain why.
+    </p>
+
+    <form method="POST">
+        <textarea name="context" rows="4" cols="60" required></textarea><br><br>
+        <button type="submit">Recall Relevant Decision</button>
+    </form>
+
+    {% if explanation %}
+        <hr>
+        <h3>Explanation</h3>
+        <pre>{{ explanation }}</pre>
+    {% endif %}
+
+    <p><a href="/">Back to Home</a></p>
+</body>
+</html>

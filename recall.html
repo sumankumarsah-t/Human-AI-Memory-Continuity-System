@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Recall Decisions</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h2>Past Decisions</h2>
+
+    {% if decisions %}
+        <ul>
+            {% for d in decisions %}
+                <li>
+                    <strong>{{ d.goal }}</strong><br>
+                    Chosen: {{ d.chosen_option }}<br>
+                    Confidence: {{ d.confidence }}<br>
+                    Reasoning: {{ d.reasoning }}<br>
+                    Time: {{ d.timestamp }}
+                    <br>
+<strong>Signals:</strong> {{ d.signals }}
+
+                </li>
+                <hr>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No decisions recorded yet.</p>
+    {% endif %}
+
+    <p>
+        <a href="/add">Add Another Decision</a> |
+        <a href="/">Back to Home</a>
+    </p>
+</body>
+</html>
